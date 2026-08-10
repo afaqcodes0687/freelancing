@@ -23,11 +23,7 @@
                             class="fa-solid fa-chart-simple"></i>{{ __('Dashboard') }}</a>
                 </li>
 
-    <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.seo.index'])) active @endif">
-        <a href="{{ route('admin.seo.index') }}">
-            <i class="fa-solid fa-search"></i>{{ __('SEO Management') }}
-        </a>
-    </li>
+  
 
     <li class="dashboard__bottom__list__item">
         <a href="{{ route('admin.logout') }}"> <i class="fa-solid fa-arrow-right-to-bracket"></i>{{ __('Log Out') }}</a>
@@ -101,36 +97,6 @@
                         <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.user.add'])) selected @endif">
                             <a href="{{ route('admin.user.add') }}">
                                 {{ __('Add New User') }} </a>
-                        </li>
-                    </ul>
-                </li>
-
-                
-
-                <li class="dashboard__bottom__list__item has-children @if (request()->is('admin/app-update*')) active open show @endif">
-                    <a href="javascript:void(0)">
-                        <i class="fa-solid fa-mobile-screen-button"></i>{{ __('App Updates') }}
-                    </a>
-                    <ul class="submenu">
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.app.update.index', 'admin.app.update.edit'])) selected @endif">
-                            <a href="{{ route('admin.app.update.index') }}"> {{ __('Manage Versions') }} </a>
-                        </li>
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.app.update.installations'])) selected @endif">
-                            <a href="{{ route('admin.app.update.installations') }}"> {{ __('Install Logs') }} </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="dashboard__bottom__list__item has-children @if (request()->is('admin/meeting*')) active open show @endif">
-                    <a href="javascript:void(0)">
-                        <i class="fa-solid fa-video"></i>{{ __('Meetings') }}
-                    </a>
-                    <ul class="submenu">
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.meeting.all'])) selected @endif">
-                            <a href="{{ route('admin.meeting.all') }}"> {{ __('All Meetings') }} </a>
-                        </li>
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.meeting.google.settings'])) selected @endif">
-                            <a href="{{ route('admin.meeting.google.settings') }}"> {{ __('Meeting Settings') }} </a>
                         </li>
                     </ul>
                 </li>
@@ -265,7 +231,7 @@
                             <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.child-category.all'])) selected @endif">
                                 <a href="{{ route('admin.child-category.all') }}"> {{ __('Skill') }} </a>
                             </li>
-                        @endcanp
+                        @endcan
                         @if(moduleExists('CoinPaymentGateway'))
                             @can('category-list')
                                 <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.category.select'])) selected @endif">
@@ -551,10 +517,6 @@
                     </ul>
                 </li>
 
-                <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.pusher.settings'])) active @endif">
-                    <a href="{{ route('admin.pusher.settings') }}"> <i class="fa-solid fa-gear"></i>{{ __('Pusher Settings') }} </a>
-                </li>
-
                 <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.ads.all'])) active @endif">
                     <a href="{{ route('admin.ads.all') }}">
                         <i class="fa-solid fa-rectangle-ad"></i>{{ __('Ad Management') }}
@@ -637,11 +599,6 @@
                         </li>
                     </ul>
                 </li>
-                    <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.seo.index'])) active @endif">
-                            <a href="{{ route('admin.seo.index') }}">
-                                <i class="fa-solid fa-search"></i>{{ __('SEO Management') }}
-                            </a>
-                    </li>
                 
                 <li
                     class="dashboard__bottom__list__item has-children @if (request()->is('admin/general-settings*') && !request()->routeIs('admin.general.settings.affiliate')) active open show @endif">
@@ -703,12 +660,7 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('email-template-settings')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.email.template'])) selected @endif">
-                                <a href="{{ route('admin.general.settings.email.template') }}">
-                                    {{ __('Email Template') }} </a>
-                            </li>
-                        @endcan
+                       
                         @can('smtp-settings')
                             <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.smtp'])) selected @endif">
                                 <a href="{{ route('admin.general.settings.smtp') }}"> {{ __('SMTP Settings') }} </a>
@@ -756,34 +708,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="dashboard__bottom__list__item has-children @if (request()->routeIs(['admin.affiliate.*', 'admin.general.settings.affiliate'])) active open show @endif">
-                    <a href="javascript:void(0)">
-                        <i class="fa-solid fa-coins"></i> {{ __('Affiliate Program') }}
-                    </a>
-                    <ul class="submenu">
-                        {{-- All Commissions --}}
-                         <li class="dashboard__bottom__list__item @if (request()->routeIs('admin.affiliate.commissions')) selected @endif">
-                            <a href="{{ route('admin.affiliate.commissions') }}">{{ __('All Commissions') }}</a>
-                        </li>
-
-                        {{-- All Payouts --}}
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.affiliate.payouts', 'admin.affiliate.payouts.show'])) selected @endif">
-                            <a href="{{ route('admin.affiliate.payouts') }}">{{ __('All Payouts') }}</a>
-                        </li>
-
-                         <li class="dashboard__bottom__list__item @if (request()->routeIs('admin.affiliate.support.*')) selected @endif">
-                            <a href="{{ route('admin.affiliate.support.index') }}">{{ __('Affiliate Support') }}</a>
-                        </li>
-
-                         <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.affiliate'])) selected @endif">
-                            <a href="{{ route('admin.general.settings.affiliate') }}"> {{ __('Commission Settings') }} </a>
-                        </li>
-
-                    </ul>
-                </li>
-
-                
 
                 <li class="dashboard__bottom__list__item has-children @if (request()->is('admin/payment-settings*')) active open show @endif">
                     <a href="javascript:void(0)"> <i class="fa-solid fa-briefcase"></i>
@@ -868,18 +792,6 @@
                     </ul>
                 </li>
 
-                <li class="dashboard__bottom__list__item has-children @if (request()->is('admin/email-template*')) active open show @endif">
-                    <a href="javascript:void(0)"> <i class="fa-solid fa-envelope"></i> {{ __('Email Template') }}
-                    </a>
-                    <ul class="submenu">
-                        @can('email-template-list')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.email.template.all'])) selected @endif">
-                                <a href="{{ route('admin.email.template.all') }}"> {{ __('All Templates') }} </a>
-                            </li>
-                        @endcan
-                    </ul>
-                </li>
-
                 <li class="dashboard__bottom__list__item has-children @if (request()->routeIs('admin.referral.invitations', 'admin.referrals')) active open show @endif">
                     <a href="javascript:void(0)">
                         <i class="fa-solid fa-envelope"></i> {{ __('Email Invitation') }}
@@ -929,142 +841,6 @@
                         @endcan
                     </ul>
                 </li>
-
-                <li class="dashboard__bottom__list__item has-children 
-                    @if (request()->is('admin/client-benefits*')) active open show @endif">
-
-                        <a href="javascript:void(0)">
-                            <i class="fa-solid fa-handshake"></i>
-                            {{ __('Benefits Settings') }}
-                        </a>
-
-                        <ul class="submenu">
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.client.benefits')) selected @endif">
-
-                                    <a href="{{ route('admin.client.benefits') }}">
-                                        {{ __('Client Benefits') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.talent.benefits')) selected @endif">
-
-                                    <a href="{{ route('admin.talent.benefits') }}">
-                                        {{ __('Talent Benefits') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.privacy.policy.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.privacy.policy.edit') }}">
-                                        {{ __('Privacy Policy') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.fees.charge.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.fees.charge.edit') }}">
-                                        {{ __('Fees & Charges') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.terms.of.service.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.terms.of.service.edit') }}">
-                                        {{ __('Terms of Service') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.service.shipping.policy.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.service.shipping.policy.edit') }}">
-                                        {{ __('Service & Shipping Policy') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.refund.return.policy.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.refund.return.policy.edit') }}">
-                                        {{ __('Refund or Return Policy') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                            @can('client-benefits-settings')
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.partnership.page.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.partnership.page.edit') }}">
-                                        {{ __('Partnership Page') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.investor.relation.page.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.investor.relation.page.edit') }}">
-                                        {{ __('Investor Relations') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.trust-safety.page.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.trust-safety.page.edit') }}">
-                                        {{ __('Trust and Safety') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.win-work-with-rewards.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.win-work-with-rewards.edit') }}">
-                                        {{ __('Win Work With Rewards') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.support.page.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.support.page.edit') }}">
-                                        {{ __('Support') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.how-it-works.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.how-it-works.edit') }}">
-                                        {{ __('How It Works') }}
-                                    </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item 
-                                @if (request()->routeIs('admin.affiliate-programme.edit')) selected @endif">
-
-                                    <a href="{{ route('admin.affiliate-programme.edit') }}">
-                                        {{ __('Affiliate Programme') }}
-                                    </a>
-                                </li>
-                            @endcan
-
-                        </ul>
-                    </li>
-
 
                 <li class="dashboard__bottom__list__item @if (request()->is(['admin/about-us*'])) active @endif">
                     <a href="{{ route('admin.about-us.index') }}"> <i
