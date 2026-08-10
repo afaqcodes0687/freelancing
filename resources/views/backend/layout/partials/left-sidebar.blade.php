@@ -53,24 +53,6 @@
                         </ul>
                     </li>
 
-                    <!-- @if (auth()->guard('admin')->check() && auth()->guard('admin')->user()->role === 'super admin')
-                        <li class="dashboard__bottom__list__item has-children @if (request()->is('admin/manage*') || request()->is('admin/role*')) active open show @endif">
-                            <a href="javascript:void(0)">
-                                <i class="fa-solid fa-user"></i> {{ __('Admin Role Manage') }}
-                            </a>
-                            <ul class="submenu">
-                                <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.create'])) selected @endif">
-                                    <a href="{{ route('admin.create') }}"> {{ __('Add New Admin') }} </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.all'])) selected @endif">
-                                    <a href="{{ route('admin.all') }}"> {{ __('All Admins') }} </a>
-                                </li>
-                                <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.role.create'])) selected @endif">
-                                    <a href="{{ route('admin.role.create') }}"> {{ __('All Roles') }} </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif -->
                 <li
                     class="dashboard__bottom__list__item has-children @if (request()->is('admin/user*')) active open show @endif">
                     <a href="javascript:void(0)"> <i class="fa-solid fa-user"></i> {{ __('User Manage') }} </a>
@@ -654,18 +636,7 @@
                                     {{ __('Third Party Scripts') }} </a>
                             </li>
                         @endcan
-                        @can('social-login-settings')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.social.login'])) selected @endif">
-                                <a href="{{ route('admin.general.settings.social.login') }}"> {{ __('Social Login') }}
-                                </a>
-                            </li>
-                        @endcan
-                       
-                        @can('smtp-settings')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.smtp'])) selected @endif">
-                                <a href="{{ route('admin.general.settings.smtp') }}"> {{ __('SMTP Settings') }} </a>
-                            </li>
-                        @endcan
+    
                         @can('custom-css-settings')
                             <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.general.settings.custom.css'])) selected @endif">
                                 <a href="{{ route('admin.general.settings.custom.css') }}"> {{ __('Custom CSS') }} </a>
@@ -702,10 +673,7 @@
                                     {{ __('Check Update') }} </a>
                             </li>
                         @endcan
-                        <li class="dashboard__bottom__list__item @if (request()->routeIs(['admin.meeting.google.settings'])) selected @endif">
-                            <a href="{{ route('admin.meeting.google.settings') }}">
-                                {{ __('Google Meeting Settings') }} </a>
-                        </li>
+                       
                     </ul>
                 </li>
 
@@ -792,27 +760,7 @@
                     </ul>
                 </li>
 
-                <li class="dashboard__bottom__list__item has-children @if (request()->routeIs('admin.referral.invitations', 'admin.referrals')) active open show @endif">
-                    <a href="javascript:void(0)">
-                        <i class="fa-solid fa-envelope"></i> {{ __('Email Invitation') }}
-                    </a>
-                    <ul class="submenu">
-                        @can('referral-invitation-list')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs('admin.referral.invitations')) selected @endif">
-                                <a href="{{ route('admin.referral.invitations') }}">{{ __('All Invitation Emails') }}</a>
-                            </li>
-                        @endcan
-
-                        @can('referral-list')
-                            <li class="dashboard__bottom__list__item @if (request()->routeIs('admin.referrals')) selected @endif">
-                                <a href="{{ route('admin.referrals') }}">{{ __('All Referral') }}</a>
-                            </li>
-                        @endcan
-                    </ul>
-                </li>
-
-                
-
+              
                 <li
                     class="dashboard__bottom__list__item has-children @if (request()->is('admin/dynamic-pages*')) active open show @endif">
                     <a href="javascript:void(0)"> <i class="fa-solid fa-file-circle-plus"></i> {{ __('Pages') }}
